@@ -1,0 +1,37 @@
+{
+    "id": 0,
+    "children": [],
+    "content": {
+        "head": {
+            "addr": "0x4011d9",
+            "func_addr": "(0x4011a9)",
+            "name": "main+0x30",
+            "attributes": ""
+        },
+        "asm": [
+            {
+                "addr": "0x004011d9:\t",
+                "mnemonic": "mov",
+                "operands": "eax, 0"
+            },
+            {
+                "addr": "0x004011de:\t",
+                "mnemonic": "pop",
+                "operands": "rbp"
+            },
+            {
+                "addr": "0x004011df:\t",
+                "mnemonic": "ret",
+                "operands": ""
+            }
+        ],
+        "sign": {
+            "has_return": true,
+            "is_simprocedure": false,
+            "is_syscall": false,
+            "no_ret": false
+        },
+        "byte_string": "b'\\xb8\\x00\\x00\\x00\\x00]\\xc3'"
+    },
+    "edge": []
+}

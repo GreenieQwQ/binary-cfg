@@ -5,6 +5,7 @@ from bingraphvis import DotOutput
 import argparse
 
 import os
+import json
 from http.server import HTTPServer, CGIHTTPRequestHandler
 
 def process(vis, obj=None, filter=None):
@@ -58,13 +59,33 @@ def extract_node_info(node, adj_list):
             'is_syscall': node.obj.is_syscall,
             'no_ret': node.obj.no_ret
         },
-        'byte_string': node.obj.byte_string
+        'byte_string': str(node.obj.byte_string)
     }
     info['edge'] = []
     for id in adj_list[node.id]:
         info['edge'].append(id)
 
     return info
+
+def get_start_id(adj_list):
+    # 寻找入度为0的节点作为起始节点
+    in_degree = [0 for _ in range(len(adj_list))]
+    out_degree = [0 for _ in range(len(adj_list))]
+
+    for id in range(len(adj_list)):
+        out_degree[id] += 1
+        for out_id in adj_list[id]:
+            in_degree[out_id] += 1
+    
+    for id in range(len(adj_list)):
+        if in_degree[id] == 0 and out_degree[id] != 0:
+            return id
+    
+    # 没有入度为0的节点时，输出第一个出度不为0的节点
+    for id in range(len(adj_list)):
+        if out_degree[id] != 0:
+            return id
+            
 
 def dfs_gen_root(start_id, nodes, adj_list, has_seen):
     root_n = nodes[start_id]
@@ -101,7 +122,10 @@ if __name__ == '__main__':
     # Generate Root
     nodes, edges, adj_list = re_index(nodes, edges)
     has_seen = set()
-    root = dfs_gen_root(0, nodes, adj_list, has_seen)
+    root = dfs_gen_root(get_start_id(adj_list), nodes, adj_list, has_seen)
+
+    with open("root.json", "w") as f:
+        json.dump(root, f)
 
     # Open a HTTP Server
     os.chdir("./")
