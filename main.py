@@ -76,34 +76,6 @@ def dfs_gen_nodes(node, has_seen, dfs_nodes):
     return dfs_nodes
 
 
-# def re_index(nodes, edges):
-#     # 对节点、边重新设定id
-#     ri_edges = []
-#     adj_list = [[] for _ in range(len(nodes))]
-#     for id, n in enumerate(nodes):
-#         n.id = id
-#     for e in edges:
-#         src_id = e.src.id
-#         dst_id = e.dst.id
-#         ri_edges.append((src_id, dst_id))
-#         adj_list[src_id].append(dst_id)
-#     return nodes, ri_edges, adj_list
-
-
-# def dfs_gen_root(start_id, nodes, adj_list, has_seen):
-#     root_n = nodes[start_id]
-#     root = extract_node_info(root_n)
-#     has_seen.add(start_id)
-
-#     for id in adj_list[start_id]:
-#         if id in has_seen:
-#             root['edge'].append(id)
-#         else:
-#             root['children'].append(dfs_gen_root(id, nodes, adj_list, has_seen))
-
-#     return root
-
-
 if __name__ == '__main__':
     # Parse Options
     parser = argparse.ArgumentParser()
