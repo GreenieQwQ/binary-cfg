@@ -123,14 +123,17 @@ function update(nodes) {
         .setGraph({ rankdir: "TB", marginx: 50, marginy: 50, ranksep: 55 })
         .setDefaultEdgeLabel(() => ({}));
 
+    // 传入节点和相对大小
     dnodes.forEach(node => {
         g.setNode(node.id, { width: node.size[0], height: node.size[1]});
     });
 
+    // 传入边
     links.forEach(link => {
         g.setEdge(link.source, link.target);
     });
 
+    // 调用dagre得到布局
     dagre.layout(g);
 
     dagreNodes = g.nodes().map(id => {

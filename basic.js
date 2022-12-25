@@ -112,11 +112,14 @@ function getNodeText(nodes, node) {
 function getNodeSize(nodes, node) {
     node.text = getNodeText(nodes, node);
     const [head, content] = node.text;
+    /* 计算最长的文本文字数目以及文本的行数 */
     const max = Math.max;
     const maxHeadLength = head.reduce((v, h) => max(v, max(v, h.content.length)), 0);
     const maxContentLength = content.reduce((v, c) => max(v, max(v, c.content.length)), 0);
+    // 节点大小基于上述计算 + 填充可得
     const width = max(maxHeadLength, maxContentLength) * TEXT_PADDING.TEXT_WIDTH;
     let height = TEXT_PADDING.HEAD_TOP + head.length * TEXT_PADDING.HEAD_HEIGHT + TEXT_PADDING.HEAD_BOTTOM;
+    // 内容为空不显示内容节点
     if(content.length)
         height += TEXT_PADDING.CONTENT_TOP + content.length * TEXT_PADDING.CONTENT_HEIGHT + TEXT_PADDING.CONTENT_BOTTOM;
     return [width, height]
@@ -172,10 +175,11 @@ function getMedianFocus(nodes, node) {
         // if(head.id == node.id)
         //     break;
         head.children.forEach(childID => {
+            // 若这个节点孩子有node，则比较关心
             if(childID == node.id) {
                 result.add(head.id);    
             }
-
+            // 进行宽度优先搜索
             if(!havePushed.has(childID)) {
                 queue.push(childID);
                 havePushed.add(childID);
