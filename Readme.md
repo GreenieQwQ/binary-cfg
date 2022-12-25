@@ -16,7 +16,7 @@ Interactive Visualization for Binary CFG
 ## Quick Start
 
 ```python
-python main.py -f "samples/main"
+python main.py -f "samples/ais3_crackme"
 ```
 
 
