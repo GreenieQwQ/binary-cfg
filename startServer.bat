@@ -1,1 +1,1 @@
-python -m http.server 8181
+python main.py -f "samples/ais3_crackme"
