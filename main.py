@@ -14,23 +14,10 @@ def process(vis, obj=None, filter=None):
     graph = vis.pipeline.process(filter=filter)
     return graph
 
-def re_index(nodes, edges):
-    # 对节点、边重新设定id
-    ri_edges = []
-    adj_list = [[] for _ in range(len(nodes))]
-    for id, n in enumerate(nodes):
-        n.id = id
-    for e in edges:
-        src_id = e.src.id
-        dst_id = e.dst.id
-        ri_edges.append((src_id, dst_id))
-        adj_list[src_id].append(dst_id)
-    return nodes, ri_edges, adj_list
 
 def extract_node_info(node):
     info = {}
     info['id'] = node.id
-    info['children'] = []
     info['content'] = {}
     if node.content.get('head', None) is not None:
         info['content']['head'] = {
@@ -54,42 +41,68 @@ def extract_node_info(node):
         'is_syscall': node.obj.is_syscall,
         'no_ret': node.obj.no_ret
     }
-    info['edge'] = []
+    info['children'] = [node.id for node in node.children]
 
     return info
 
-def get_start_id(adj_list):
-    # 寻找入度为0的节点作为起始节点
-    in_degree = [0 for _ in range(len(adj_list))]
-    out_degree = [0 for _ in range(len(adj_list))]
 
-    for id in range(len(adj_list)):
-        for out_id in adj_list[id]:
-            out_degree[id] += 1
-            in_degree[out_id] += 1
+def get_start_id(nodes):
+    # 统计出度和入度
+    for node in nodes:
+        for child in node.children:
+            child.in_degree += 1
+            node.out_degree += 1
     
-    for id in range(len(adj_list)):
-        if in_degree[id] == 0 and out_degree[id] != 0:
-            return id
+    # 寻找入度为0的节点作为起始节点
+    for node in nodes:
+        if node.in_degree == 0 and node.out_degree != 0:
+            return node
     
     # 没有入度为0的节点时，输出第一个出度不为0的节点
-    for id in range(len(adj_list)):
-        if out_degree[id] != 0:
-            return id
-            
+    for node in nodes:
+        if node.out_degree != 0:
+            return node
 
-def dfs_gen_root(start_id, nodes, adj_list, has_seen):
-    root_n = nodes[start_id]
-    root = extract_node_info(root_n)
-    has_seen.add(start_id)
 
-    for id in adj_list[start_id]:
-        if id in has_seen:
-            root['edge'].append(id)
-        else:
-            root['children'].append(dfs_gen_root(id, nodes, adj_list, has_seen))
+def dfs_gen_nodes(node, has_seen, dfs_nodes):
+    has_seen.add(node)
+    dfs_nodes.append(node)
+    
+    for child in node.children:
+        if child in has_seen:
+            continue
+        dfs_gen_nodes(child, has_seen, dfs_nodes)
+    
+    return dfs_nodes
 
-    return root
+
+# def re_index(nodes, edges):
+#     # 对节点、边重新设定id
+#     ri_edges = []
+#     adj_list = [[] for _ in range(len(nodes))]
+#     for id, n in enumerate(nodes):
+#         n.id = id
+#     for e in edges:
+#         src_id = e.src.id
+#         dst_id = e.dst.id
+#         ri_edges.append((src_id, dst_id))
+#         adj_list[src_id].append(dst_id)
+#     return nodes, ri_edges, adj_list
+
+
+# def dfs_gen_root(start_id, nodes, adj_list, has_seen):
+#     root_n = nodes[start_id]
+#     root = extract_node_info(root_n)
+#     has_seen.add(start_id)
+
+#     for id in adj_list[start_id]:
+#         if id in has_seen:
+#             root['edge'].append(id)
+#         else:
+#             root['children'].append(dfs_gen_root(id, nodes, adj_list, has_seen))
+
+#     return root
+
 
 if __name__ == '__main__':
     # Parse Options
@@ -117,14 +130,31 @@ if __name__ == '__main__':
     nodes = list(cgraph.nodes)
     edges = cgraph.edges
 
-    # Generate Root
-    nodes, edges, adj_list = re_index(nodes, edges)
+    # Generate Node List
+    for n in nodes:
+        n.children = []
+        n.in_degree = 0
+        n.out_degree = 0
+    for e in edges:
+        e.src.children.append(e.dst)
+    dfs_nodes = []
     has_seen = set()
-    root = dfs_gen_root(get_start_id(adj_list), nodes, adj_list, has_seen)
+    dfs_gen_nodes(get_start_id(nodes), has_seen, dfs_nodes)
 
-    with open("root.json", "w") as f:
-        json.dump(root, f)
+    # Avoid isolated nodes
+    for n in nodes:
+        if n not in dfs_nodes:
+            dfs_nodes.append(n)
+
+    # Indexing
+    for i, node in enumerate(dfs_nodes):
+        node.id = i
+    
+    nodes_js = [extract_node_info(node) for node in dfs_nodes]
+
+    with open("data/nodes.json", "w") as f:
+        json.dump(nodes_js, f)
 
     # Open a HTTP Server
     os.chdir("./")
-    HTTPServer(('127.0.0.1', 8080), CGIHTTPRequestHandler).serve_forever()
+    HTTPServer(('127.0.0.1', 8181), CGIHTTPRequestHandler).serve_forever()

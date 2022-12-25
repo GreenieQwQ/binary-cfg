@@ -1,0 +1,982 @@
+[
+    {
+        "id": 0,
+        "content": {
+            "head": {
+                "addr": "0x4005c5",
+                "func_addr": "(0x4005c5)",
+                "name": "main",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005c5:\t",
+                    "mnemonic": "push",
+                    "operands": "rbp"
+                },
+                {
+                    "addr": "0x004005c6:\t",
+                    "mnemonic": "mov",
+                    "operands": "rbp, rsp"
+                },
+                {
+                    "addr": "0x004005c9:\t",
+                    "mnemonic": "sub",
+                    "operands": "rsp, 0x10"
+                },
+                {
+                    "addr": "0x004005cd:\t",
+                    "mnemonic": "mov",
+                    "operands": "dword ptr [rbp - 4], edi"
+                },
+                {
+                    "addr": "0x004005d0:\t",
+                    "mnemonic": "mov",
+                    "operands": "qword ptr [rbp - 0x10], rsi"
+                },
+                {
+                    "addr": "0x004005d4:\t",
+                    "mnemonic": "cmp",
+                    "operands": "dword ptr [rbp - 4], 2"
+                },
+                {
+                    "addr": "0x004005d8:\t",
+                    "mnemonic": "je",
+                    "operands": "0x4005eb"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            1,
+            18
+        ]
+    },
+    {
+        "id": 1,
+        "content": {
+            "head": {
+                "addr": "0x4005eb",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x26",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005eb:\t",
+                    "mnemonic": "mov",
+                    "operands": "rax, qword ptr [rbp - 0x10]"
+                },
+                {
+                    "addr": "0x004005ef:\t",
+                    "mnemonic": "add",
+                    "operands": "rax, 8"
+                },
+                {
+                    "addr": "0x004005f3:\t",
+                    "mnemonic": "mov",
+                    "operands": "rax, qword ptr [rax]"
+                },
+                {
+                    "addr": "0x004005f6:\t",
+                    "mnemonic": "mov",
+                    "operands": "rdi, rax"
+                },
+                {
+                    "addr": "0x004005f9:\t",
+                    "mnemonic": "call",
+                    "operands": "0x400520"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            2,
+            5
+        ]
+    },
+    {
+        "id": 2,
+        "content": {
+            "head": {
+                "addr": "0x400520",
+                "func_addr": "(0x400520)",
+                "name": "verify",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x00400520:\t",
+                    "mnemonic": "push",
+                    "operands": "rbp"
+                },
+                {
+                    "addr": "0x00400521:\t",
+                    "mnemonic": "mov",
+                    "operands": "rbp, rsp"
+                },
+                {
+                    "addr": "0x00400524:\t",
+                    "mnemonic": "mov",
+                    "operands": "qword ptr [rbp - 0x18], rdi"
+                },
+                {
+                    "addr": "0x00400528:\t",
+                    "mnemonic": "mov",
+                    "operands": "dword ptr [rbp - 4], 0"
+                },
+                {
+                    "addr": "0x0040052f:\t",
+                    "mnemonic": "jmp",
+                    "operands": "0x4005a1"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            3
+        ]
+    },
+    {
+        "id": 3,
+        "content": {
+            "head": {
+                "addr": "0x4005a1",
+                "func_addr": "(0x400520)",
+                "name": "verify+0x81",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005a1:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x004005a4:\t",
+                    "mnemonic": "movsxd",
+                    "operands": "rdx, eax"
+                },
+                {
+                    "addr": "0x004005a7:\t",
+                    "mnemonic": "mov",
+                    "operands": "rax, qword ptr [rbp - 0x18]"
+                },
+                {
+                    "addr": "0x004005ab:\t",
+                    "mnemonic": "add",
+                    "operands": "rax, rdx"
+                },
+                {
+                    "addr": "0x004005ae:\t",
+                    "mnemonic": "movzx",
+                    "operands": "eax, byte ptr [rax]"
+                },
+                {
+                    "addr": "0x004005b1:\t",
+                    "mnemonic": "test",
+                    "operands": "al, al"
+                },
+                {
+                    "addr": "0x004005b3:\t",
+                    "mnemonic": "jne",
+                    "operands": "0x400531"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            4,
+            14
+        ]
+    },
+    {
+        "id": 4,
+        "content": {
+            "head": {
+                "addr": "0x4005b9",
+                "func_addr": "(0x400520)",
+                "name": "verify+0x99",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005b9:\t",
+                    "mnemonic": "cmp",
+                    "operands": "dword ptr [rbp - 4], 0x17"
+                },
+                {
+                    "addr": "0x004005bd:\t",
+                    "mnemonic": "sete",
+                    "operands": "al"
+                },
+                {
+                    "addr": "0x004005c0:\t",
+                    "mnemonic": "movzx",
+                    "operands": "eax, al"
+                },
+                {
+                    "addr": "0x004005c3:\t",
+                    "mnemonic": "pop",
+                    "operands": "rbp"
+                },
+                {
+                    "addr": "0x004005c4:\t",
+                    "mnemonic": "ret",
+                    "operands": ""
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            5
+        ]
+    },
+    {
+        "id": 5,
+        "content": {
+            "head": {
+                "addr": "0x4005fe",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x39",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005fe:\t",
+                    "mnemonic": "test",
+                    "operands": "eax, eax"
+                },
+                {
+                    "addr": "0x00400600:\t",
+                    "mnemonic": "je",
+                    "operands": "0x40060e"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            6,
+            10
+        ]
+    },
+    {
+        "id": 6,
+        "content": {
+            "head": {
+                "addr": "0x40060e",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x49",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x0040060e:\t",
+                    "mnemonic": "mov",
+                    "operands": "edi, 0x400718"
+                },
+                {
+                    "addr": "0x00400613:\t",
+                    "mnemonic": "call",
+                    "operands": "0x4003f0"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            7,
+            9
+        ]
+    },
+    {
+        "id": 7,
+        "content": {
+            "head": {
+                "addr": "0x4003f0",
+                "func_addr": "(0x4003f0)",
+                "name": null,
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004003f0:\t",
+                    "mnemonic": "jmp",
+                    "operands": "qword ptr [rip + 0x200c0a]"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            8
+        ]
+    },
+    {
+        "id": 8,
+        "content": {
+            "head": {
+                "addr": "0x700000",
+                "func_addr": "(0x700000)",
+                "name": "puts",
+                "attributes": "SIMP"
+            },
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": true,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            9
+        ]
+    },
+    {
+        "id": 9,
+        "content": {
+            "head": {
+                "addr": "0x400618",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x53",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x00400618:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, 0"
+                },
+                {
+                    "addr": "0x0040061d:\t",
+                    "mnemonic": "leave",
+                    "operands": ""
+                },
+                {
+                    "addr": "0x0040061e:\t",
+                    "mnemonic": "ret",
+                    "operands": ""
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": []
+    },
+    {
+        "id": 10,
+        "content": {
+            "head": {
+                "addr": "0x400602",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x3d",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x00400602:\t",
+                    "mnemonic": "mov",
+                    "operands": "edi, 0x4006f0"
+                },
+                {
+                    "addr": "0x00400607:\t",
+                    "mnemonic": "call",
+                    "operands": "0x4003f0"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            11,
+            13
+        ]
+    },
+    {
+        "id": 11,
+        "content": {
+            "head": {
+                "addr": "0x4003f0",
+                "func_addr": "(0x4003f0)",
+                "name": null,
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004003f0:\t",
+                    "mnemonic": "jmp",
+                    "operands": "qword ptr [rip + 0x200c0a]"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            12
+        ]
+    },
+    {
+        "id": 12,
+        "content": {
+            "head": {
+                "addr": "0x700000",
+                "func_addr": "(0x700000)",
+                "name": "puts",
+                "attributes": "SIMP"
+            },
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": true,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            13
+        ]
+    },
+    {
+        "id": 13,
+        "content": {
+            "head": {
+                "addr": "0x40060c",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x47",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x0040060c:\t",
+                    "mnemonic": "jmp",
+                    "operands": "0x400618"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            9
+        ]
+    },
+    {
+        "id": 14,
+        "content": {
+            "head": {
+                "addr": "0x400531",
+                "func_addr": "(0x400520)",
+                "name": "verify+0x11",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x00400531:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x00400534:\t",
+                    "mnemonic": "movsxd",
+                    "operands": "rdx, eax"
+                },
+                {
+                    "addr": "0x00400537:\t",
+                    "mnemonic": "mov",
+                    "operands": "rax, qword ptr [rbp - 0x18]"
+                },
+                {
+                    "addr": "0x0040053b:\t",
+                    "mnemonic": "add",
+                    "operands": "rax, rdx"
+                },
+                {
+                    "addr": "0x0040053e:\t",
+                    "mnemonic": "movzx",
+                    "operands": "eax, byte ptr [rax]"
+                },
+                {
+                    "addr": "0x00400541:\t",
+                    "mnemonic": "mov",
+                    "operands": "edx, eax"
+                },
+                {
+                    "addr": "0x00400543:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x00400546:\t",
+                    "mnemonic": "xor",
+                    "operands": "eax, edx"
+                },
+                {
+                    "addr": "0x00400548:\t",
+                    "mnemonic": "mov",
+                    "operands": "byte ptr [rbp - 5], al"
+                },
+                {
+                    "addr": "0x0040054b:\t",
+                    "mnemonic": "movzx",
+                    "operands": "edx, byte ptr [rbp - 5]"
+                },
+                {
+                    "addr": "0x0040054f:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x00400552:\t",
+                    "mnemonic": "xor",
+                    "operands": "eax, 9"
+                },
+                {
+                    "addr": "0x00400555:\t",
+                    "mnemonic": "and",
+                    "operands": "eax, 3"
+                },
+                {
+                    "addr": "0x00400558:\t",
+                    "mnemonic": "mov",
+                    "operands": "ecx, eax"
+                },
+                {
+                    "addr": "0x0040055a:\t",
+                    "mnemonic": "shl",
+                    "operands": "edx, cl"
+                },
+                {
+                    "addr": "0x0040055c:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, edx"
+                },
+                {
+                    "addr": "0x0040055e:\t",
+                    "mnemonic": "mov",
+                    "operands": "edx, eax"
+                },
+                {
+                    "addr": "0x00400560:\t",
+                    "mnemonic": "movzx",
+                    "operands": "esi, byte ptr [rbp - 5]"
+                },
+                {
+                    "addr": "0x00400564:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x00400567:\t",
+                    "mnemonic": "xor",
+                    "operands": "eax, 9"
+                },
+                {
+                    "addr": "0x0040056a:\t",
+                    "mnemonic": "and",
+                    "operands": "eax, 3"
+                },
+                {
+                    "addr": "0x0040056d:\t",
+                    "mnemonic": "mov",
+                    "operands": "ecx, eax"
+                },
+                {
+                    "addr": "0x0040056f:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, 8"
+                },
+                {
+                    "addr": "0x00400574:\t",
+                    "mnemonic": "sub",
+                    "operands": "eax, ecx"
+                },
+                {
+                    "addr": "0x00400576:\t",
+                    "mnemonic": "mov",
+                    "operands": "ecx, eax"
+                },
+                {
+                    "addr": "0x00400578:\t",
+                    "mnemonic": "sar",
+                    "operands": "esi, cl"
+                },
+                {
+                    "addr": "0x0040057a:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, esi"
+                },
+                {
+                    "addr": "0x0040057c:\t",
+                    "mnemonic": "or",
+                    "operands": "eax, edx"
+                },
+                {
+                    "addr": "0x0040057e:\t",
+                    "mnemonic": "mov",
+                    "operands": "byte ptr [rbp - 5], al"
+                },
+                {
+                    "addr": "0x00400581:\t",
+                    "mnemonic": "add",
+                    "operands": "byte ptr [rbp - 5], 8"
+                },
+                {
+                    "addr": "0x00400585:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x00400588:\t",
+                    "mnemonic": "cdqe",
+                    "operands": ""
+                },
+                {
+                    "addr": "0x0040058a:\t",
+                    "mnemonic": "movzx",
+                    "operands": "eax, byte ptr [rax + 0x601020]"
+                },
+                {
+                    "addr": "0x00400591:\t",
+                    "mnemonic": "cmp",
+                    "operands": "al, byte ptr [rbp - 5]"
+                },
+                {
+                    "addr": "0x00400594:\t",
+                    "mnemonic": "je",
+                    "operands": "0x40059d"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            15,
+            16
+        ]
+    },
+    {
+        "id": 15,
+        "content": {
+            "head": {
+                "addr": "0x40059d",
+                "func_addr": "(0x400520)",
+                "name": "verify+0x7d",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x0040059d:\t",
+                    "mnemonic": "add",
+                    "operands": "dword ptr [rbp - 4], 1"
+                },
+                {
+                    "addr": "0x004005a1:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, dword ptr [rbp - 4]"
+                },
+                {
+                    "addr": "0x004005a4:\t",
+                    "mnemonic": "movsxd",
+                    "operands": "rdx, eax"
+                },
+                {
+                    "addr": "0x004005a7:\t",
+                    "mnemonic": "mov",
+                    "operands": "rax, qword ptr [rbp - 0x18]"
+                },
+                {
+                    "addr": "0x004005ab:\t",
+                    "mnemonic": "add",
+                    "operands": "rax, rdx"
+                },
+                {
+                    "addr": "0x004005ae:\t",
+                    "mnemonic": "movzx",
+                    "operands": "eax, byte ptr [rax]"
+                },
+                {
+                    "addr": "0x004005b1:\t",
+                    "mnemonic": "test",
+                    "operands": "al, al"
+                },
+                {
+                    "addr": "0x004005b3:\t",
+                    "mnemonic": "jne",
+                    "operands": "0x400531"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            4,
+            14
+        ]
+    },
+    {
+        "id": 16,
+        "content": {
+            "head": {
+                "addr": "0x400596",
+                "func_addr": "(0x400520)",
+                "name": "verify+0x76",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x00400596:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, 0"
+                },
+                {
+                    "addr": "0x0040059b:\t",
+                    "mnemonic": "jmp",
+                    "operands": "0x4005c3"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            17
+        ]
+    },
+    {
+        "id": 17,
+        "content": {
+            "head": {
+                "addr": "0x4005c3",
+                "func_addr": "(0x400520)",
+                "name": "verify+0xa3",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005c3:\t",
+                    "mnemonic": "pop",
+                    "operands": "rbp"
+                },
+                {
+                    "addr": "0x004005c4:\t",
+                    "mnemonic": "ret",
+                    "operands": ""
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            5
+        ]
+    },
+    {
+        "id": 18,
+        "content": {
+            "head": {
+                "addr": "0x4005da",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x15",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005da:\t",
+                    "mnemonic": "mov",
+                    "operands": "edi, 0x4006c8"
+                },
+                {
+                    "addr": "0x004005df:\t",
+                    "mnemonic": "call",
+                    "operands": "0x4003f0"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            19,
+            21
+        ]
+    },
+    {
+        "id": 19,
+        "content": {
+            "head": {
+                "addr": "0x4003f0",
+                "func_addr": "(0x4003f0)",
+                "name": null,
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004003f0:\t",
+                    "mnemonic": "jmp",
+                    "operands": "qword ptr [rip + 0x200c0a]"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            20
+        ]
+    },
+    {
+        "id": 20,
+        "content": {
+            "head": {
+                "addr": "0x700000",
+                "func_addr": "(0x700000)",
+                "name": "puts",
+                "attributes": "SIMP"
+            },
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": true,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            21
+        ]
+    },
+    {
+        "id": 21,
+        "content": {
+            "head": {
+                "addr": "0x4005e4",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x1f",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x004005e4:\t",
+                    "mnemonic": "mov",
+                    "operands": "eax, 0xffffffff"
+                },
+                {
+                    "addr": "0x004005e9:\t",
+                    "mnemonic": "jmp",
+                    "operands": "0x40061d"
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": [
+            22
+        ]
+    },
+    {
+        "id": 22,
+        "content": {
+            "head": {
+                "addr": "0x40061d",
+                "func_addr": "(0x4005c5)",
+                "name": "main+0x58",
+                "attributes": ""
+            },
+            "asm": [
+                {
+                    "addr": "0x0040061d:\t",
+                    "mnemonic": "leave",
+                    "operands": ""
+                },
+                {
+                    "addr": "0x0040061e:\t",
+                    "mnemonic": "ret",
+                    "operands": ""
+                }
+            ],
+            "sign": {
+                "has_return": false,
+                "is_simprocedure": false,
+                "is_syscall": false,
+                "no_ret": false
+            }
+        },
+        "children": []
+    }
+]
