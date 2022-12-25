@@ -145,7 +145,6 @@ function update(nodes) {
     });
     
     /* View Box(Auto Layout for svg) */
-    // TODO: Wait Implementation
 
     // let viewX = Infinity;  // 所有节点最左侧的X坐标
     // let viewY = Infinity;  // 所有节点最顶部的Y坐标
@@ -376,7 +375,6 @@ function update(nodes) {
     let textarea_height = TEXTAREA.HEIGHT_PADDING + TEXTAREA.LINE_HEIGHT * textarea_line;
     
     let bias = (clientRect.height - textarea_height) / 2;
-    console.log(clientRect)
 
     let textboard = d3.select(".textboard")
         .style("top", clientRect.top + bias + "px")
@@ -428,7 +426,6 @@ function click(n) {
 function contextmenu(n) {
     n.is_manual_focus = !n.is_manual_focus;
     d3.event.preventDefault();
-    console.log(n);
     update(nodes);
 }
 
